@@ -61,7 +61,9 @@ const uploadFormatParams = ({file, blob, fileInfo}: any) => {
   return formData;
 }
 
-const App = () => {
+const App = (props: any) => {
+  console.log(props);
+  
   const { 
     uploadProps, 
     stopUpload,
