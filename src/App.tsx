@@ -106,7 +106,7 @@ const App = (props: any) => {
             <Button type="primary" onClick={onUpload} disabled={!!(preUploadPercent < 100)}>
               <Icon type="upload" />提交上传
             </Button>
-            <Button onClick={stopUpload} type="danger">暂停测试2.0</Button>
+            <Button onClick={stopUpload} type="danger">暂停测试3.0</Button>
           </div>
         </Spin>
       </div>
