@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Link, BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import App from './App';
-import { Button } from "antd";
+import { Button, Input } from "antd";
 
 function RouterPage() {
   return (
@@ -41,18 +41,30 @@ function Test(props) {
 }
 
 function Home(props) {
+  const [user, setUser] = useState();
+  const [password, setPassword] = useState();
+  const onSubmit = () => {
+    fetch('/login/userLogin', {
+      method: 'post',
+      credentials: 'include',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'userNo=' + user + '&pwd=' + password + '&token=vania'
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    })
+  }
   return (
     <div>
       我是home页面
+      <Input onChange={(e) => setUser(e.target.value)} />
+      <Input onChange={(e) => setPassword(e.target.value)} />
       <Button 
-        onClick={() => {
-          props.history.push({
-            pathname: '/app',
-            state: {
-              abe: 23
-            }
-          })
-        }} 
+        onClick={onSubmit} 
         type="primary"
       >跳转到app页面</Button>
     </div>
