@@ -44,7 +44,7 @@ function Home(props) {
   const [user, setUser] = useState();
   const [password, setPassword] = useState();
   const onSubmit = () => {
-    fetch('/nginx/login/userLogin', {
+    fetch('hscm/login/userLogin', {
       method: 'post',
       credentials: 'include',
       mode: 'cors',
